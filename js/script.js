@@ -9,6 +9,9 @@ const backBox = document.querySelector(".back-box");
 
 const result = document.querySelector(".result"); 
 
+const boxes = document.querySelector(".box"); 
+
+
 
 
 
@@ -17,6 +20,7 @@ const result = document.querySelector(".result");
 const bombs = [];
 const totalBox = [];
 let points = 0;
+let x = 0;
 
 
 
@@ -104,8 +108,19 @@ function addBox(outputContainer,boxNumber,grid){
 
             //perdita
             this.classList.add("color-red");
-            container.classList.add("none");
-            backBox.classList.remove("grey");
+            // container.classList.add("none");
+            // backBox.classList.remove("grey");
+
+            // prova verifica con ciclo while
+            while(x <= 16){
+                if(bombs.includes(boxes.innerHTML))
+                console.log(bombs);
+                this.classList.add("color-red");
+                x++
+            }
+
+
+
             result.innerHTML = `GAME OVER </br> points: ${points}`;
         }
         
