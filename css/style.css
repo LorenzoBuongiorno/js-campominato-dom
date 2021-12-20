@@ -49,9 +49,14 @@ button{
     color: #333;
     cursor: pointer;
 }
-.box.color{
+.box.color-blue{
     background-color: #3a6ba3;
 }
+
+.box.color-red{
+    background-color: #ff0000;
+}
+
 
 .easy-grid{
     width: calc(500px / 10);

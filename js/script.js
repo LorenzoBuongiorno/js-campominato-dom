@@ -75,9 +75,19 @@ function addBox(outputContainer,boxNumber,grid){
     // coloro i box selezionati
     box.addEventListener("click", function(){
         
-        this.classList.add("color");
-         const prova = this.innerHTML;
-        console.log(prova);
+        const numberChose = parseInt(this.innerHTML);
+        console.log(numberChose);
+
+        if (!bombs.includes(numberChose)){
+            this.classList.add("color-blue");
+        console.log("si");
+
+        } else {
+            this.classList.add("color-red");
+        console.log("no");
+
+        }
+        
     })
     
 }
