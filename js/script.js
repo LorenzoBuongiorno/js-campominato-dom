@@ -9,7 +9,7 @@ const backBox = document.querySelector(".back-box");
 
 const result = document.querySelector(".result"); 
 
-const boxes = document.querySelector(".box"); 
+const lost = document.querySelector(".lost"); 
 
 
 
@@ -18,9 +18,8 @@ const boxes = document.querySelector(".box");
 
 
 const bombs = [];
-const totalBox = [];
+let totalBox = 0;
 let points = 0;
-let x = 0;
 
 
 
@@ -39,8 +38,8 @@ buttonEasy.addEventListener("click", function(){
         let grid = "easy-grid";
         addBox(container,i,grid);
         backBox.classList.add("grey");
-        totalBox.push(i);
-        
+        totalBox = 100;
+
     }
     
 })
@@ -56,7 +55,7 @@ buttonMedium.addEventListener("click", function(){
         let grid = "medium-grid";
         addBox(container,i,grid);
         backBox.classList.add("grey");
-        totalBox.push(i);
+        totalBox = 81;
         
     }
     
@@ -73,7 +72,7 @@ buttonHard.addEventListener("click", function(){
         let grid = "hard-grid";
         addBox(container,i,grid);
         backBox.classList.add("grey");
-        totalBox.push(i);
+        totalBox = 49;
         
     }
     
@@ -82,22 +81,28 @@ buttonHard.addEventListener("click", function(){
 // funzione di aggiunta box
 function addBox(outputContainer,boxNumber,grid){
     const box = document.createElement("div"); 
-    box.className = `box ${grid}`;
-    outputContainer.append(box);
-    box.innerHTML += `${boxNumber}`;
+    if(bombs.includes(boxNumber)){
+        box.className = `box lost ${grid}`;
+        outputContainer.append(box);
+        box.innerHTML += `${boxNumber}`;
+    } else {
+        box.className = `box ${grid}`;
+        outputContainer.append(box);
+        box.innerHTML += `${boxNumber}`;
+    }
+
     
     
     // coloro i box selezionati
     box.addEventListener("click", function(){
         //selezione numero
-        const numberChose = parseInt(this.innerHTML);
-        console.log(numberChose);
+        console.log(boxNumber);
         //se il numero è nella lista bomba o no
-        if (!bombs.includes(numberChose)){
+        if (!bombs.includes(boxNumber)){
             this.classList.add("color-blue");
             points++;
             //vittoria per completamento
-            if(points === totalBox.length - 16){
+            if(points == totalBox - 16){
                 console.log("win");
                 container.classList.add("none");
                 backBox.classList.remove("grey");
@@ -105,22 +110,9 @@ function addBox(outputContainer,boxNumber,grid){
             }
 
         } else {
-
             //perdita
-            this.classList.add("color-red");
-            // container.classList.add("none");
-            // backBox.classList.remove("grey");
-
-            // prova verifica con ciclo while
-            while(x <= 16){
-                if(bombs.includes(boxes.innerHTML))
-                console.log(bombs);
-                this.classList.add("color-red");
-                x++
-            }
-
-
-
+            // this.classList.add("color-red");
+            lost.classList.replace("lost, color-red");
             result.innerHTML = `GAME OVER </br> points: ${points}`;
         }
         
