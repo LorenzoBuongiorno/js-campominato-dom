@@ -7,11 +7,16 @@ const buttonHard = document.querySelector(".hard");
 const container = document.querySelector(".container"); 
 const backBox = document.querySelector(".back-box"); 
 
+const result = document.querySelector(".result"); 
+
+
 
 
 
 
 const bombs = [];
+const totalBox = [];
+let points = 0;
 
 
 
@@ -29,6 +34,7 @@ buttonEasy.addEventListener("click", function(){
         let grid = "easy-grid";
         addBox(container,i,grid);
         backBox.classList.add("grey");
+        totalBox.push(i);
         
     }
     
@@ -44,6 +50,7 @@ buttonMedium.addEventListener("click", function(){
         let grid = "medium-grid";
         addBox(container,i,grid);
         backBox.classList.add("grey");
+        totalBox.push(i);
         
     }
     
@@ -59,6 +66,7 @@ buttonHard.addEventListener("click", function(){
         let grid = "hard-grid";
         addBox(container,i,grid);
         backBox.classList.add("grey");
+        totalBox.push(i);
         
     }
     
@@ -80,15 +88,22 @@ function addBox(outputContainer,boxNumber,grid){
 
         if (!bombs.includes(numberChose)){
             this.classList.add("color-blue");
-        console.log("si");
+            points++;
+            if(points === totalBox.length - 16){
+                console.log("win");
+                container.classList.add("none");
+                backBox.classList.remove("grey");
+            result.innerHTML = `YOU WIN </br> points: ${points}`;
+            }
 
         } else {
             this.classList.add("color-red");
-        console.log("no");
-
+            container.classList.add("none");
+            backBox.classList.remove("grey");
+            result.innerHTML = `GAME OVER </br> points: ${points}`;
         }
         
-    })
+    }, {once : true})
     
 }
 
