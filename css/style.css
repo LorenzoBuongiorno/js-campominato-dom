@@ -1,0 +1,76 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.background{
+    background-color: #3a6ba3;
+}
+
+main{
+    width: 1000px;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+button{
+    width: 200px;
+    height: 100px;
+    border: 0;
+    background-color: #333;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.difficulty.none{
+    display: none;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+
+}
+
+.box{
+    background-color: #bbbbbb;
+    border: 2px solid #6a6a6a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    cursor: pointer;
+}
+.box.color{
+    background-color: #3a6ba3;
+}
+
+.easy-grid{
+    width: calc(500px / 10);
+    height: calc(500px / 10);
+    font-size: 15px;
+}
+
+.medium-grid{
+    width: calc(500px / 9);
+    height: calc(500px / 9);
+    font-size: 20px;
+}
+
+.hard-grid{
+    width: calc(500px / 7);
+    height: calc(500px / 7);
+    font-size: 25px;
+}
+
+.grey{
+    border: 5px solid #333;
+}
