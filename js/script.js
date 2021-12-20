@@ -9,18 +9,12 @@ const backBox = document.querySelector(".back-box");
 
 const result = document.querySelector(".result"); 
 
-const lost = document.querySelector(".lost"); 
-
-
-
-
 
 
 
 const bombs = [];
 let totalBox = 0;
 let points = 0;
-
 
 
 
@@ -111,8 +105,13 @@ function addBox(outputContainer,boxNumber,grid){
 
         } else {
             //perdita
-            // this.classList.add("color-red");
-            lost.classList.replace("lost, color-red");
+            container.classList.add("unclick");
+            const lost = document.querySelectorAll('.lost')
+            //colora tutte le caselle bomba di rosso
+            for(let i = 0; i < lost.length; i++) {
+            lost[i].classList.add("color-red");
+            }
+
             result.innerHTML = `GAME OVER </br> points: ${points}`;
         }
         
