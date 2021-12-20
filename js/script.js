@@ -7,7 +7,12 @@ const buttonHard = document.querySelector(".hard");
 const container = document.querySelector(".container"); 
 const backBox = document.querySelector(".back-box"); 
 
+
+
+
+
 const bombs = [];
+
 
 
 
@@ -71,8 +76,8 @@ function addBox(outputContainer,boxNumber,grid){
     box.addEventListener("click", function(){
         
         this.classList.add("color");
-        
-        
+         const prova = this.innerHTML;
+        console.log(prova);
     })
     
 }
